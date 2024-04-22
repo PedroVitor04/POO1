@@ -7,16 +7,20 @@ using namespace std;
 class Cliente{ //classe com os dados do perfil de um usuario
 
     private: //argumentos
+        int id; //usado e atualizado para ser o indice do elemento na lista
         int idade;
         string CPF;
         string nome;
         string genero;
         string endereco;
 
-    public: //funcoes para interagir com os argumentos do cliente, "set" para colocar um dado e "get" para retornar o dado
+    public:
         Cliente();
-        Cliente(int idade, string CPF, string nome, string genero, string endereco);
+        Cliente(int id, int idade, string CPF, string nome, string genero, string endereco);
         ~Cliente();
+
+        int setId(int id);
+        int getId();
 
         int setIdade(int idade);
         int getIdade();
@@ -32,6 +36,10 @@ class Cliente{ //classe com os dados do perfil de um usuario
 
         int setEndereco(string endereco);
         string getEndereco();
+
+        bool operator==(const Cliente& cliente) const;
+
+        friend std::ostream& operator<<(std::ostream& os, const Cliente& cliente);
 };
 
-#endif;
+#endif

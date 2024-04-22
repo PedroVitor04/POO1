@@ -3,33 +3,44 @@
 #include "veiculo.h"
 #include "servico.h"
 #include "garagem.h"
-#include "mostra.h"
-
-#include "cliente.cpp"
-#include "veiculo.cpp"
-#include "servico.cpp"
-#include "garagem.cpp"
-#include "mostra.cpp"
+#include "clientela.h"
+#include "atividades.h"
+#include "caminhonete.h"
+#include "carro.h"
+#include "moto.h"
+#include "caminhao.h"
 
 using namespace std;
 
 int main(){
 
-    Cliente *C1 = new Cliente(30,"123.456.789-01","Maurice","Maculino","Alegrete");
-    Veiculo *V1 = new Veiculo(0,2020,1850,1.735,650,"9BD111060T5002156","Caminhonete","ABC1D23");
-    Servico *S1 = new Servico(C1,V1,350,"Alegrete","Porto Alegre");
+    Clientela *C = new Clientela; //exemplos de inicializacao das listas
     Garagem *G = new Garagem;
+    Atividades *A = new Atividades;
 
+    Cliente *C1 = new Cliente(0,30,"56462612010","Maurice","Masculino","Alegrete"); //exemplos de criacao de cada classe
+    C->addClientela(C1);
+
+    Moto *V1 = new Moto(0,-27.5935,-48.5585,2020,1850,1.735,650.0,"9BD111060T5002156","SUV","EFG4H56");
     G->addGaragem(V1);
+
+    Moto *V2 = new Moto(0,-30.0277,-51.2287,2020,1850,1.735,650.0,"9BD111060T5002156","FIAT","ABC1D23");
+    G->addGaragem(V2);
+
+    Servico *S1 = new Servico(0,C1,G,-29.7848,-55.7757,350,"Alegrete","Porto Alegre");
+    A->addAtividades(S1);
+
+    cout << *C1 << endl; //exemplos de ipressao
+    cout << *V1 << endl;
+    cout << *S1 << endl;
+
+    C->limpaLista(); //libera todos os itens colocados nas listas
     G->limpaLista();
+    A->limpaLista();
 
-    mostraCliente(C1); //funcao para imprimir os dados do cliente
-    mostraVeiculo(V1); //funcao para imprimir os dados do veiculo
-    mostraServico(S1); //funcao para imprimir os dados do servico
-
-    delete C1; //libra as memorias
-    delete V1;
-    delete S1;
+    delete G; //libera o ponteiro de cada lista
+    delete C;
+    delete A;
 
     return 0;
 }

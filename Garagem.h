@@ -3,15 +3,13 @@
 #include <iostream>
 #include <list>
 #include "veiculo.h"
-#include "caminhonete.h"
 
 using namespace std;
 
-class Garagem{
+class Garagem{ //classe para lista de veiculos
 
     private:
     std::list<Veiculo*> lista;
-    int count;
 
     public:
     Garagem();
@@ -19,8 +17,11 @@ class Garagem{
 
     int addGaragem(Veiculo *veiculo);
     int removeGaragem(int id);
+    Veiculo* pesquisaId(int id);
+    int tamanho();
 
+    int atualizaIds();
     int limpaLista();
 };
 
-#endif;
+#endif

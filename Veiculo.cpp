@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cctype>
 #include <string>
 #include "veiculo.h"
 
@@ -6,6 +7,9 @@ using namespace std;
 
 Veiculo::Veiculo(){
     this->id = -1;
+    this->disponibilidade = 1;
+    this->latitude = 0.0;
+    this->longitude = 0.0;
     this->ano = 0;
     this->peso = 0.0;
     this->altura = 0.0;
@@ -15,8 +19,10 @@ Veiculo::Veiculo(){
     this->placa = "";
 }
 
-Veiculo::Veiculo(int id, int ano, float peso, float altura, float capacidade, string chassi, string modelo, string placa){
+Veiculo::Veiculo(int id, double latitude, double longitude, int ano, float peso, float altura, float capacidade, string chassi, string modelo, string placa){
     this->setId(id);
+    this->setLatitude(latitude);
+    this->setLongitude(longitude);
     this->setAno(ano);
     this->setPeso(peso);
     this->setAltura(altura);
@@ -29,7 +35,7 @@ Veiculo::Veiculo(int id, int ano, float peso, float altura, float capacidade, st
 Veiculo::~Veiculo(){
 }
 
-int Veiculo::setId(int id){
+int Veiculo::setId(int id){ //essa funcao so e usada pela classe da sua lista
     if(id >= 0){
         this->id = id;
         return 1;
@@ -37,7 +43,6 @@ int Veiculo::setId(int id){
 
     return 0;
 }
-
 int Veiculo::getId(){
     if(this->id >= 1){
         return this->id;
@@ -46,8 +51,48 @@ int Veiculo::getId(){
     return 0;
 }
 
+int Veiculo::mudaDisponibilidade(){ //altera entre 1 e 0 a disponibilidade conforme um veiculo é designado dentro da classe Servico
+    if (this->disponibilidade){
+        this->disponibilidade = 0;
+    } else {
+        this->disponibilidade = 1;
+    }
+
+    return 1; 
+}
+int Veiculo::getDisponibilidade(){
+
+    return this->disponibilidade;
+}
+
+int Veiculo::setLatitude(double latitude){
+    this->latitude = latitude;
+
+    return 1;
+}
+double Veiculo::getLatitude(){
+    if(!(this->latitude == 0.0)){
+        return this->latitude;
+    }
+
+    return 0.0;
+}
+
+int Veiculo::setLongitude(double longitude){
+    this->longitude = longitude;
+
+    return 1;
+}
+double Veiculo::getLongitude(){
+    if(!(this->longitude == 0.0)){
+        return this->longitude;
+    }
+
+    return 0.0;
+}
+
 int Veiculo::setAno(int ano){
-    if(ano <= 1980 && ano <= 2024){
+    if(1980 <= ano <= 2024){
         this->ano = ano;
         return 1;
     }
@@ -55,7 +100,7 @@ int Veiculo::setAno(int ano){
     return 0;
 }
 int Veiculo::getAno(){
-    if(this->ano >= 0){
+    if(this->ano > 0){
         return this->ano;
     }
 
@@ -110,7 +155,7 @@ float Veiculo::getCapacidade(){
     return 0.0;
 }
 
-int Veiculo::setChassi(string chassi){
+int Veiculo::setChassi(string chassi){ //essa funcao tenta aceitar somente chassis dentro do padrao, porem o padrao e muito complexo, entao ela nao tem alguns parametros
     int i = 0;
     if(chassi.size() == 17){
 
@@ -156,6 +201,7 @@ int Veiculo::setModelo(string modelo){
             return 0;
         }
     }
+    this->modelo = modelo;
 
     return 1;
 }
@@ -167,7 +213,7 @@ string Veiculo::getModelo(){
     return "Sem dados";
 }
 
-int Veiculo::setPlaca(string placa){
+int Veiculo::setPlaca(string placa){ //so aceita placas validas
     int i = 0;
     if(placa.size() ==7){
 
@@ -205,3 +251,27 @@ string Veiculo::getPlaca(){
 
     return "Sem dados";
 }
+
+bool Veiculo::operator==(const Veiculo& veiculo) const{ //se uma comparacao "==" entre veiculos for efetuada, esses sao os argumentos que serao comparados
+    return this->ano == veiculo.ano && 
+           this->peso == veiculo.peso &&
+           this->altura == veiculo.altura &&
+           this->capacidade == veiculo.capacidade &&
+           this->chassi == veiculo.chassi &&
+           this->modelo == veiculo.modelo &&
+           this->placa == veiculo.placa;
+}
+
+std::ostream& operator<<(std::ostream& os, const Veiculo& veiculo) { //modelo de saida
+        os
+        << "\n"
+        << "Modelo de Veiculo: " << veiculo.modelo << "\n" 
+        << "Ano: " << veiculo.ano << "\n" 
+        << "Placa: " << veiculo.placa << "\n"
+        << "Altura: " << veiculo.altura << "m"<< "\n"
+        << "Peso: " << veiculo.peso << "kg" << "\n"
+        << "Capacidade: " << veiculo.capacidade << "kg" << "\n"
+        << "Chassi: " << veiculo.chassi << "\n"
+        << endl;
+        return os;
+    }

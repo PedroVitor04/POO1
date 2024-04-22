@@ -3,20 +3,19 @@
 #include <iostream>
 #include "veiculo.h"
 
+
 using namespace std;
 
-class Caminhonete : public Veiculo{
+class Caminhonete : public Veiculo{ //uma das classes filhas da Veiculo
 
     private:
-        int quilometragem;
 
     public:
         Caminhonete();
-        Caminhonete(int id, int ano, float peso, float altura, float capacidade, string chassi, string modelo, string placa, int quilometragem);
+        Caminhonete(int id, double latitude, double longitude, int ano, float peso, float altura, float capacidade, string chassi, string modelo, string placa);
         ~Caminhonete();
 
-        int setQuilometragem(int quilometragem);
-        int getQuilometragem();
+        bool operator==(const Caminhonete& caminhonete) const;
 };
 
-#endif;
+#endif

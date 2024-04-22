@@ -4,10 +4,13 @@
 
 using namespace std;
 
-class Veiculo{ //classe com argumentos das informacoes de um veiculo
+class Veiculo{
 
-    private: //argumentos
-        int id;
+    private:
+        int id; //usado e atualizado para ser o indice do elemento na lista
+        int disponibilidade; //pode ser 1 ou 0 quando o veiculo estver disponivel ou nao respectivamente
+        double latitude; 
+        double longitude;
         int ano;
         float peso;
         float altura;
@@ -16,13 +19,22 @@ class Veiculo{ //classe com argumentos das informacoes de um veiculo
         string modelo;
         string placa;
 
-    public: //funcoes para interagir com os argumentos do veiculo
+    public:
         Veiculo();
-        Veiculo(int id, int ano, float peso, float altura, float capacidade, string chassi, string modelo, string placa);
+        Veiculo(int id, double latitude, double longitude, int ano, float peso, float altura, float capacidade, string chassi, string modelo, string placa);
         ~Veiculo();
 
-        int setId(int id);
+        int setId(int id); 
         int getId();
+
+        int mudaDisponibilidade(); 
+        int getDisponibilidade();
+
+        int setLatitude(double latitude);
+        double getLatitude();
+
+        int setLongitude(double longitude);
+        double getLongitude();
 
         int setAno(int ano);
         int getAno();
@@ -44,6 +56,10 @@ class Veiculo{ //classe com argumentos das informacoes de um veiculo
 
         int setPlaca(string placa);
         string getPlaca();
+
+        bool operator==(const Veiculo& veiculo) const;
+
+        friend std::ostream& operator<<(std::ostream& os, const Veiculo& veiculo);
 };
 
-#endif;
+#endif

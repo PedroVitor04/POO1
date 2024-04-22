@@ -2,28 +2,42 @@
 #define SERVICO_H
 #include <iostream>
 #include "cliente.h"
+#include "veiculo.h"
+#include "garagem.h"
 
 using namespace std;
 
-class Servico{ //classe com argumentos das informacoes de um servico
+class Servico{
 
-    private: //argumentos
-        class Cliente *contratante; //um servico esta sempre atrelado a um cliente
-        class Veiculo *transporte; //e tambem a um veiculo
+    private:
+        int id; //usado e atualizado para ser o indice do elemento na lista
+        Cliente *contratante; //um servico esta sempre atrelado a um cliente
+        Veiculo *transporte; //e tambem a um veiculo
+        double latitude;
+        double longitude;
         float peso;
         float volume;
         string coleta;
         string entrega;
 
-    public: //funcoes para interagir com os argumentos do servico
+    public:
         Servico();
-        Servico(Cliente *contratante, Veiculo *transporte, float peso, string coleta, string entrega);
+        Servico(int id, Cliente *contratante, Garagem *transporte, double latitude, double longitude, float peso, string coleta, string entrega);
         ~Servico();
+
+        int setId(int id);
+        int getId();
+
+        int setLatitude(double latitude);
+        double getLatitude();
+
+        int setLongitude(double longitude);
+        double getLongitude();
 
         int setContratante(Cliente *contratante);
         Cliente* getContratante();
 
-        int setTransporte(Veiculo *transporte);
+        int setTransporte(Garagem *transporte);
         Veiculo* getTransporte();
 
         int setPeso(float peso);
@@ -34,6 +48,12 @@ class Servico{ //classe com argumentos das informacoes de um servico
 
         int setEntrega(string entrega);
         string getEntrega();
+
+        double distancia(double lat1, double lon1, double lat2, double lon2);
+
+        bool operator==(const Servico& servico) const;
+
+        friend std::ostream& operator<<(std::ostream& os, const Servico& servico);
 };
 
-#endif;
+#endif

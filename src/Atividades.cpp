@@ -1,25 +1,23 @@
 #include <iostream>
 #include <list>
-#include "cliente.h"
-#include "clientela.h"
+#include "../inc/Atividades.h"
 
 using namespace std;
 
-Clientela::Clientela(){
+Atividades::Atividades(){
 }
-
-Clientela::~Clientela(){
+Atividades::~Atividades(){
     this->limpaLista();
 }
 
-int Clientela::addClientela(Cliente *cliente){
-    this->lista.push_back(cliente);
+int Atividades::addAtividades(Servico *servico){
+    this->lista.push_back(servico);
     this->atualizaIds();
 
     return 1;
 }
 
-int Clientela::removeClientela(int id){ //utiliza o id dos veiculos como indice para a lista       Obs.: o primeiro item da lista é sempre 1
+int Atividades::removeAtividades(int id){ //utiliza o id dos veiculos como indice para a lista       Obs.: o primeiro item da lista é sempre 1
     for (auto it = this->lista.begin(); it != this->lista.end(); ++it){
         if ((*it)->getId() == id) {
             delete *it;
@@ -33,7 +31,7 @@ int Clientela::removeClientela(int id){ //utiliza o id dos veiculos como indice 
     return 0;
 }
 
-Cliente* Clientela::pesquisaId(int id){ //retorna o cliente desejado com base no seu indice na lista
+Servico* Atividades::pesquisaId(int id){ //retorna o cliente desejado com base no seu indice na lista
     for (auto it = this->lista.begin(); it != this->lista.end(); ++it){
         if ((*it)->getId() == id) {
 
@@ -44,7 +42,7 @@ Cliente* Clientela::pesquisaId(int id){ //retorna o cliente desejado com base no
     return nullptr;
 }
 
-int Clientela::atualizaIds(){ //toda vez que adicionams ou removemos um item na lista, seus itens podem ficar fora de ordem, entao essa funçao muda o id de todos para permancerem na ordem e funcionarem como indice
+int Atividades::atualizaIds(){ //toda vez que adicionams ou removemos um item na lista, seus itens podem ficar fora de ordem, entao essa funçao muda o id de todos para permancerem na ordem e funcionarem como indice
     int i = 1;
 
     for (auto it = this->lista.begin(); it != this->lista.end(); ++it){
@@ -55,7 +53,7 @@ int Clientela::atualizaIds(){ //toda vez que adicionams ou removemos um item na 
     return 1;
 }
 
-int Clientela::limpaLista(){
+int Atividades::limpaLista(){
     this->lista.clear();
     
     return 1;

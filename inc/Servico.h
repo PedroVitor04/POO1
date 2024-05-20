@@ -1,9 +1,9 @@
 #ifndef SERVICO_H
 #define SERVICO_H
 #include <iostream>
-#include "cliente.h"
-#include "veiculo.h"
-#include "garagem.h"
+#include "Cliente.h"
+#include "Veiculo.h"
+#include "Garagem.h"
 
 using namespace std;
 

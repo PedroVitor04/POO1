@@ -2,7 +2,7 @@
 #define CLIENTELA_H
 #include <iostream>
 #include <list>
-#include "cliente.h"
+#include "Cliente.h"
 
 using namespace std;
 

@@ -1,5 +1,5 @@
 #include <iostream>
-#include "caminhao.h"
+#include "../inc/Caminhao.h"
 
 using namespace std;
 

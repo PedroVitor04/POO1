@@ -2,10 +2,7 @@
 #include <cctype>
 #include <cmath>
 #include <limits>
-#include "cliente.h"
-#include "veiculo.h"
-#include "servico.h"
-#include "garagem.h"
+#include "../inc/Servico.h"
 
 using namespace std;
 
@@ -226,4 +223,4 @@ std::ostream& operator<<(std::ostream& os, const Servico& servico) { //modelo de
     << "Coleta: " << servico.coleta << "\n"
     << "Entrega: " << servico.entrega << "\n"
     << endl;
-    }
+}

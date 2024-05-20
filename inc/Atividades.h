@@ -2,7 +2,7 @@
 #define ATIVIDADES_H
 #include <iostream>
 #include <list>
-#include "servico.h"
+#include "Servico.h"
 
 using namespace std;
 

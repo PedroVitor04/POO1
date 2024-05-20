@@ -1,24 +1,24 @@
 #include <iostream>
 #include <list>
-#include "garagem.h"
-#include "veiculo.h"
+#include "../inc/Clientela.h"
 
 using namespace std;
 
-Garagem::Garagem(){
+Clientela::Clientela(){
 }
-Garagem::~Garagem(){
+
+Clientela::~Clientela(){
     this->limpaLista();
 }
 
-int Garagem::addGaragem(Veiculo *veiculo){
-    this->lista.push_back(veiculo);
+int Clientela::addClientela(Cliente *cliente){
+    this->lista.push_back(cliente);
     this->atualizaIds();
 
     return 1;
 }
 
-int Garagem::removeGaragem(int id){ //utiliza o id dos veiculos como indice para a lista       Obs.: o primeiro item da lista é sempre 1
+int Clientela::removeClientela(int id){ //utiliza o id dos veiculos como indice para a lista       Obs.: o primeiro item da lista é sempre 1
     for (auto it = this->lista.begin(); it != this->lista.end(); ++it){
         if ((*it)->getId() == id) {
             delete *it;
@@ -32,7 +32,7 @@ int Garagem::removeGaragem(int id){ //utiliza o id dos veiculos como indice para
     return 0;
 }
 
-Veiculo* Garagem::pesquisaId(int id){ //retorna o veiculo desejado com base no seu indice na lista
+Cliente* Clientela::pesquisaId(int id){ //retorna o cliente desejado com base no seu indice na lista
     for (auto it = this->lista.begin(); it != this->lista.end(); ++it){
         if ((*it)->getId() == id) {
 
@@ -43,11 +43,7 @@ Veiculo* Garagem::pesquisaId(int id){ //retorna o veiculo desejado com base no s
     return nullptr;
 }
 
-int Garagem::tamanho(){
-    return this->lista.size();
-}
-
-int Garagem::atualizaIds(){ //toda vez que adicionams ou removemos um item na lista, seus itens podem ficar fora de ordem, entao essa funçao muda o id de todos para permancerem na ordem e funcionarem como indice
+int Clientela::atualizaIds(){ //toda vez que adicionams ou removemos um item na lista, seus itens podem ficar fora de ordem, entao essa funçao muda o id de todos para permancerem na ordem e funcionarem como indice
     int i = 1;
 
     for (auto it = this->lista.begin(); it != this->lista.end(); ++it){
@@ -58,7 +54,7 @@ int Garagem::atualizaIds(){ //toda vez que adicionams ou removemos um item na li
     return 1;
 }
 
-int Garagem::limpaLista(){
+int Clientela::limpaLista(){
     this->lista.clear();
     
     return 1;

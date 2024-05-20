@@ -1,5 +1,5 @@
 #include <iostream>
-#include "caminhonete.h"
+#include "../inc/Caminhonete.h"
 
 using namespace std;
 

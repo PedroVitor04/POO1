@@ -1,6 +1,6 @@
 #include <iostream>
 #include <cctype>
-#include "cliente.h"
+#include "../inc/Cliente.h"
 
 using namespace std;
 

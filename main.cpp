@@ -1,14 +1,14 @@
 #include <iostream>
-#include "cliente.h"
-#include "veiculo.h"
-#include "servico.h"
-#include "garagem.h"
-#include "clientela.h"
-#include "atividades.h"
-#include "caminhonete.h"
-#include "carro.h"
-#include "moto.h"
-#include "caminhao.h"
+#include "inc/Cliente.h"
+#include "inc/Veiculo.h"
+#include "inc/Servico.h"
+#include "inc/Garagem.h"
+#include "inc/Clientela.h"
+#include "inc/Atividades.h"
+#include "inc/Caminhonete.h"
+#include "inc/Carro.h"
+#include "inc/Moto.h"
+#include "inc/Caminhao.h"
 
 using namespace std;
 
